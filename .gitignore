@@ -26,3 +26,5 @@ realty-web/build/
 
 # Temp
 nul
+realty-public/node_modules/
+realty-public/build/
