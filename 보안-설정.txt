@@ -1,0 +1,60 @@
+보안 토큰 시스템 설정 완료
+========================
+
+## 보안 강화 내용
+
+1. **URL 토큰 인증**
+   - 올바른 토큰 없이는 접속 불가
+   - 토큰: RealtyMate_SecureToken_2025_KH_System
+   - URL에 ?token=xxx 형태로 전달
+
+2. **API 요청 헤더 인증**
+   - 모든 API 요청에 X-Auth-Token 헤더 필요
+   - Spring Boot에서 토큰 검증
+
+3. **자동 토큰 저장**
+   - URL로 한번 접속하면 sessionStorage에 저장
+   - 브라우저 탭이 닫힐 때까지 유효
+
+## 접속 방법
+
+### 핸드폰에서 접속
+http://211.219.122.49:3000?token=RealtyMate_SecureToken_2025_KH_System
+
+### 로컬에서 접속
+http://localhost:3000?token=RealtyMate_SecureToken_2025_KH_System
+
+⚠️ 주의: 토큰 없이 접속하면 "접근 권한이 없습니다" 화면이 표시됩니다
+
+## 토큰 변경 방법
+
+토큰을 변경하려면 다음 두 파일을 동시에 수정:
+
+1. src/main/resources/application.properties
+   app.security.token=새로운토큰
+
+2. realty-web/src/auth.ts
+   const SECRET_TOKEN = "새로운토큰";
+
+⚠️ 주의: 두 파일의 토큰이 일치해야 합니다!
+
+## 보안 수준
+
+- 기본 보안: URL 토큰으로 무단 접근 차단
+- 추가 보안: 직원ID 로그인 (1234, 5678)
+- 권장 사항:
+  * 토큰을 주기적으로 변경
+  * 외부 공개 시 VPN 사용 권장
+  * HTTPS 사용 시 더욱 안전
+
+## 문제 해결
+
+"접근 권한이 없습니다" 화면이 나올 때:
+1. URL에 ?token=xxx가 올바르게 포함되었는지 확인
+2. sessionStorage 초기화: F12 개발자도구 → Application → Session Storage → 삭제
+3. 토큰이 정확한지 확인 (대소문자 구분)
+
+"Unauthorized - Invalid token" 에러:
+1. Spring Boot 서버 재시작
+2. application.properties의 토큰 확인
+3. auth.ts의 토큰 확인

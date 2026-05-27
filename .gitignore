@@ -1,0 +1,28 @@
+# Build output
+build/
+out/
+.gradle/
+
+# Logs
+logs/
+*.log
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Sensitive - API keys & credentials
+src/main/resources/application.properties
+src/main/resources/*.json
+
+# Frontend build artifacts
+realty-web/node_modules/
+realty-web/build/
+
+# Temp
+nul

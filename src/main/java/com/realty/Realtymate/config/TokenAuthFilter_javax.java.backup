@@ -1,0 +1,52 @@
+package com.realty.Realtymate.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+// Spring Boot 2.x 버전용 (javax.servlet)
+// jakarta 에러 나면 이 파일을 TokenAuthFilter.java로 이름 변경하세요
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@Component
+public class TokenAuthFilter extends OncePerRequestFilter {
+
+    @Value("${app.security.token:RealtyMate_SecureToken_2025_KH_System}")
+    private String secretToken;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+
+        String path = request.getRequestURI();
+
+        // API 경로가 아니거나 헬스체크면 패스
+        if (!path.startsWith("/api/") || path.equals("/api/health")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        // OPTIONS 요청은 허용 (CORS preflight)
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        // 헤더에서 토큰 확인
+        String token = request.getHeader("X-Auth-Token");
+
+        if (token == null || !token.equals(secretToken)) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("{\"error\": \"Unauthorized - Invalid token\"}");
+            return;
+        }
+
+        filterChain.doFilter(request, response);
+    }
+}
