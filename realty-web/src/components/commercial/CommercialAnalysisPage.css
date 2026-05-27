@@ -1,0 +1,5 @@
+.commercial-analysis-page {
+  height: calc(100vh - 80px);
+  display: flex;
+  overflow: hidden;
+}

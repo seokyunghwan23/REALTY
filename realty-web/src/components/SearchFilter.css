@@ -1,0 +1,225 @@
+.search-filter {
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+}
+
+.filter-section {
+  margin-bottom: 16px;
+}
+
+.filter-section:last-child {
+  margin-bottom: 0;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.input-group.flex-1 {
+  flex: 1;
+}
+
+.input-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  max-width: 400px;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.input-group input[type="text"] {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input-group input.input-small {
+  width: 80px;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+.input-with-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.input-with-checkbox input[type="text"] {
+  flex: 1;
+}
+
+.my-properties-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.my-properties-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  max-width: 600px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: #4CAF50;
+  color: white;
+  min-width: 100px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #45a049;
+}
+
+.btn-primary:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #f5f5f5;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+  background: #e8e8e8;
+}
+
+.property-types {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.property-type-group {
+  flex: 1;
+  min-width: 140px;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+.radio-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.radio-header input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.radio-header label {
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.platform-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 24px;
+}
+
+.platform-checkboxes label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.platform-checkboxes input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* 모바일 최적화 */
+@media (max-width: 768px) {
+  .search-filter {
+    padding: 12px;
+  }
+
+  .input-row {
+    flex-direction: row;
+  }
+
+  .input-group.flex-1 {
+    flex: 3;
+  }
+
+  .input-group input.input-small {
+    max-width: 80px;
+  }
+
+  .property-types {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .property-type-group {
+    flex: 1;
+    min-width: auto;
+    padding: 8px;
+  }
+
+  .radio-header label {
+    font-size: 13px;
+  }
+
+  .platform-checkboxes {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-left: 0;
+    gap: 8px;
+  }
+
+  .platform-checkboxes label {
+    font-size: 12px;
+  }
+}
