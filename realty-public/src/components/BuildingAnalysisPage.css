@@ -64,7 +64,7 @@
 /* ── 메인 레이아웃 ── */
 .bld-main {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 330px 1fr;
   gap: 16px;
   align-items: start;
 }
@@ -117,6 +117,8 @@
   border-radius: 4px;
   font-size: 12px;
   background: white;
+  height: 26px;
+  box-sizing: border-box;
 }
 .bld-field input:focus,
 .bld-field select:focus {
@@ -136,6 +138,8 @@
   font-size: 11px;
   color: #888;
   white-space: nowrap;
+  min-width: 22px;
+  display: inline-block;
 }
 
 /* 용도지역 선택 row */
@@ -198,26 +202,26 @@
 
 /* 증축 분석 카드 */
 .bld-info-card {
-  width: 180px;
+  width: 210px;
   flex-shrink: 0;
   background: white;
   border: 1px solid #dde3e8;
   border-radius: 8px;
-  padding: 14px;
+  padding: 10px;
 }
 .bld-info-card-title {
   font-size: 13px;
   font-weight: 700;
   color: #405D72;
-  margin-bottom: 10px;
-  padding-bottom: 8px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
   border-bottom: 1px solid #e0e0e0;
 }
 .bld-info-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .bld-info-label {
   font-size: 11px;
@@ -244,7 +248,7 @@
   overflow: hidden;
 }
 .bld-summary-title {
-  padding: 10px 14px;
+  padding: 7px 10px;
   font-size: 13px;
   font-weight: 700;
   color: #405D72;
@@ -253,17 +257,17 @@
 .bld-summary-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: 12px;
 }
 .bld-summary-table tr:nth-child(odd) { background: #f7f3f0; }
 .bld-summary-table tr:nth-child(even) { background: #ffffff; }
 .bld-summary-table td {
-  padding: 7px 12px;
+  padding: 5px 10px;
 }
 .bld-summary-table td:first-child {
   color: #405D72;
   font-weight: 600;
-  width: 140px;
+  width: 120px;
 }
 .bld-summary-table td:last-child {
   text-align: right;
@@ -278,7 +282,7 @@
   overflow: hidden;
 }
 .bld-floor-detail-title {
-  padding: 10px 14px;
+  padding: 7px 10px;
   font-size: 13px;
   font-weight: 700;
   color: #405D72;
@@ -291,18 +295,43 @@
 }
 .bld-floor-table th {
   background: #f0f4f7;
-  padding: 6px 10px;
+  padding: 4px 8px;
   text-align: left;
   font-weight: 600;
   color: #405D72;
   border-bottom: 1px solid #ddd;
 }
 .bld-floor-table td {
-  padding: 5px 10px;
+  padding: 4px 8px;
   border-bottom: 1px solid #f0f0f0;
   color: #333;
 }
 .bld-floor-table tr:last-child td { border-bottom: none; }
+
+/* 분석요약 + 층별현황 나란히 */
+.bld-bottom-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.bld-bottom-row .bld-summary-card { flex: 1; min-width: 0; }
+.bld-bottom-row .bld-floor-detail { flex: 1; min-width: 0; }
+
+/* 증축분석 카드 내 주의사항 */
+.bld-notice-inline {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #e0e0e0;
+  font-size: 10px;
+  color: #888;
+  line-height: 1.6;
+}
+.bld-notice-inline strong {
+  display: block;
+  color: #e67e22;
+  font-size: 10px;
+  margin-bottom: 2px;
+}
 
 /* 주의사항 */
 .bld-notice {
@@ -315,6 +344,112 @@
   line-height: 1.6;
 }
 .bld-notice strong { display: block; margin-bottom: 4px; }
+
+/* ── 탭 네비게이션 ── */
+.bld-tab-nav {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 14px;
+  border-bottom: 2px solid #e0e6eb;
+  padding-bottom: 0;
+}
+.bld-tab {
+  padding: 8px 20px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #888;
+  cursor: pointer;
+  border-radius: 4px 4px 0 0;
+  transition: color 0.15s;
+}
+.bld-tab:hover { color: #405D72; }
+.bld-tab.active {
+  color: #405D72;
+  border-bottom-color: #405D72;
+  background: #f0f4f7;
+}
+
+/* ── 설정 탭 ── */
+.bld-settings {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.bld-settings-header {
+  font-size: 15px;
+  font-weight: 700;
+  color: #405D72;
+  margin-bottom: 6px;
+}
+.bld-settings-desc {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 14px;
+}
+.bld-settings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.bld-settings-table th {
+  background: #405D72;
+  color: white;
+  padding: 8px 12px;
+  font-weight: 600;
+  text-align: center;
+}
+.bld-settings-table th:first-child { text-align: left; }
+.bld-settings-table td {
+  padding: 5px 10px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+.bld-settings-table td:first-child { text-align: left; color: #333; }
+.bld-settings-table tr:nth-child(odd) td { background: #fafafa; }
+.bld-settings-table tr:last-child td { border-bottom: none; }
+.bld-settings-input {
+  width: 80px;
+  padding: 3px 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+  text-align: center;
+}
+.bld-settings-input:focus { outline: none; border-color: #405D72; }
+.bld-settings-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 14px;
+}
+.bld-btn-reset {
+  padding: 8px 20px;
+  background: #aaa;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.bld-btn-reset:hover { background: #888; }
+.bld-btn-save {
+  padding: 8px 20px;
+  background: #405D72;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.bld-btn-save:hover { background: #526e83; }
 
 /* 에러 / 로딩 */
 .bld-empty {

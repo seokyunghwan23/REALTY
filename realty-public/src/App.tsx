@@ -6,7 +6,7 @@ import './App.css';
 type Tab = 'tax' | 'building';
 
 function App() {
-  const [activeTab, setActiveTab] = useState<Tab>('tax');
+  const [activeTab, setActiveTab] = useState<Tab>('building');
 
   return (
     <div className="app">
@@ -15,16 +15,16 @@ function App() {
           <h1>부동산 계산기</h1>
           <nav className="app-tab-nav">
             <button
-              className={`app-tab${activeTab === 'tax' ? ' active' : ''}`}
-              onClick={() => setActiveTab('tax')}
-            >
-              세금 계산기
-            </button>
-            <button
               className={`app-tab${activeTab === 'building' ? ' active' : ''}`}
               onClick={() => setActiveTab('building')}
             >
               건물 분석
+            </button>
+            <button
+              className={`app-tab${activeTab === 'tax' ? ' active' : ''}`}
+              onClick={() => setActiveTab('tax')}
+            >
+              세금 계산기
             </button>
           </nav>
         </div>
